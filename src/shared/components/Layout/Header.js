@@ -43,7 +43,7 @@ const Header = (props)=>{
         </form>
       </div>
 <div id="cart" className="col-lg-3 col-md-3 col-sm-12">
-	<a className="mt-4 mr-2" href="#">giỏ hàng</a><span className="mt-3">{totalCart}</span>
+	<Link to="/cart" className="mt-4 mr-2">Giỏ hàng</Link><span className="mt-3">{totalCart}</span>
 </div>
     </div>
   </div>
