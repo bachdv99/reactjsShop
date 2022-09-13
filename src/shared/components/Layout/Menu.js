@@ -7,13 +7,15 @@ const Menu = ({item})=>{
     <nav>
       <div id="menu" className="collapse navbar-collapse">
         <ul>
-          {
+          {/* {
             item.map((categories)=>{
               return(
-                <li className="menu-item"><Link to={`/category-${categories._id}`}>{categories.name}</Link></li>
+                <>
+                 <li className="menu-item"><Link to={`/category-${categories._id}`}>{categories.name}</Link></li>
+                    <li></li>
+                </>
               )
-            })
-          }
+            }) */}
         </ul>
       </div>
     </nav>

@@ -1,8 +1,28 @@
 import Http from "./Http";
+//
+//
 
-export const getProduct = (config)=>{
+export const getProducts = (config)=>{
     return Http.get("/products",config);
 };
+
+export const getProduct = (id,config)=>{
+    return Http.get("/product",config)
+}
+
+// export const getProductTest =(config)=>{
+//     return Http.get("/product",{
+//         params:{
+//             id:config.id,
+//             name:config.name,
+//         }
+//     },config)
+// }
+
+export const getLatestProducts = (config)=>{
+    return Http.get("/LateProducts")
+}
+
 
 export const getCategories = (config)=>{
     return Http.get("/categories",config);
