@@ -48,7 +48,6 @@ const App = () => {
           <div className="row">
             <div id="main" className="col-lg-8 col-md-12 col-sm-12">
               <Slider/>
-
               <Switch>
        <Route exact path="/" component={HomePage}/>
        <Route path="/Cart" component={CartPage}/>

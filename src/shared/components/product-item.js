@@ -15,8 +15,6 @@ const ProductItem =({item})=>{
 export default ProductItem;
 
 //destructring asignment in es6
-
-
 /*
 b1: gắn url để tới Page Product(bao gồm cả id)
 b2: hoàn thiện Router cho Page Product
