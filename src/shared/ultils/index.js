@@ -1,5 +1,7 @@
 import { BASE_URL } from "../constants/app";
 
-export const getImageProduct = (imageName)=>{
-    return `${BASE_URL}/assets/uploads/products/${imageName}`
+export const getImageProduct = (item)=>{
+    console.log(item);
+    return `${BASE_URL}/images/${item._id}-${item.name}`
 }
+// 

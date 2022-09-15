@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {getImageProduct} from "../../shared/ultils"
 import { createComment,getCommentsProduct,getProductDetails } from "../../services/Api";
 import moment from "moment";
@@ -6,8 +6,12 @@ import { ADD_TO_CART } from "../../shared/constants/action-type";
 import { useDispatch } from "react-redux";
 
 const ProductDetails = (props)=>{
+  
+  // console.log(props.match.params.id);
+  // console.log(props)
+  // 
   const dispatch = useDispatch();
-
+  
   const history = props.history;
   const addToCart = (type)=>{
     if(productdetails){
@@ -33,10 +37,16 @@ const ProductDetails = (props)=>{
   const [newComment,setNewcomment]=React.useState(null);
 
   const [comments,setComments]=React.useState(null);
-  
+  const [src,setSrc]= React.useState('');
   const id = props.match.params.id;
   const [productdetails, setProductDetails] = React.useState(null);
-
+  useEffect(async () => {
+    const data = await getProductDetails(props.match.params.id)
+    let datatoshow = data.data; // 
+    console.log(datatoshow);
+    setProductDetails(datatoshow);
+    setSrc(getImageProduct(datatoshow));
+}, [id]);
   const onChange=(e)=>{
     const {name,value} = e.target
     setNewcomment({...newComment,[name]:value});
@@ -45,8 +55,8 @@ const ProductDetails = (props)=>{
 
   const getComments =(id)=>{
     getCommentsProduct(id,{}).then((res)=>{
-      setComments(res.data.data.docs);
-      console.log(res.data.data.docs);
+      setComments(res.data);
+      console.log(res.data);
       })
   }
   const onSubmitComment=(e)=>{
@@ -62,23 +72,11 @@ const ProductDetails = (props)=>{
       console.log(res.data);
     })
   }
-
-
-  React.useEffect(()=>{
-    //
-    getProductDetails(id,{}).then((res)=>{
-      setProductDetails(res.data.data)
-      // console.log(res.data.data);
-
-      getComments(id);
-    })
-  },[id])
-
     return(
 <div id="product">
   <div id="product-head" className="row">
     <div id="product-img" className="col-lg-6 col-md-6 col-sm-12">
-      <img src={getImageProduct(productdetails?.image)} />
+      <img src={src} />
     </div>
     <div id="product-details" className="col-lg-6 col-md-6 col-sm-12">
       <h1>{productdetails?.name}</h1>

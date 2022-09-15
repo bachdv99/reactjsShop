@@ -1,5 +1,5 @@
 import React from "react";
-import {getProducts, getLatestProducts } from "../../services/Api";
+import {getProducts, getLatestProducts,getFeaturedProducts } from "../../services/Api";
 import ProductItem from "../../shared/components/product-item";
 // import getLatestProducts from "../../services/Api";
 import getProductTest from "../../services/Api"
@@ -14,10 +14,9 @@ const Home = () => {
       setLateProduct(res.data);
       console.log(res.data);
     })
-
-    getProducts().then((res) => {
+    getFeaturedProducts().then((res) => {
       setFeaturedProduct(res.data);
-      // console.log(res);
+      console.log(res.data);
     })
   }, [])
 
@@ -27,8 +26,8 @@ const Home = () => {
         <h3>Sản phẩm nổi bật</h3>
         <div className="product-list card-deck">
           {
-            featuredProduct.map((product) => {
-              return <ProductItem item={product} />
+            featuredProduct.map((featuredProduct) => {
+              return <ProductItem item={featuredProduct} />
             })
           }
         </div>
@@ -39,8 +38,8 @@ const Home = () => {
         <h3>Sản phẩm mới</h3>
         <div className="product-list card-deck">
           {
-        latestProduct.map((product)=>{
-          return <ProductItem item ={product}/>
+        latestProduct.map((latestProduct)=>{
+          return <ProductItem item ={latestProduct}/>
         })
       }
         </div>

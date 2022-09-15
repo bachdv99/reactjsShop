@@ -18,11 +18,17 @@ export const getProduct = (id,config)=>{
 //         }
 //     },config)
 // }
-
-export const getLatestProducts = (config)=>{
-    return Http.get("/LateProducts")
+export const getProductDetails =  (id,config)=>{
+    return Http.get(`/${id}`,config)
 }
 
+export const getLatestProducts = (config)=>{
+    return Http.get("/LatestProducts")
+}
+
+export const getFeaturedProducts = (config)=>{
+    return Http.get("/FeaturedProducts")
+}
 
 export const getCategories = (config)=>{
     return Http.get("/categories",config);
@@ -36,9 +42,7 @@ export const getCategoriesProducts = (id,config)=>{
     return Http.get(`/categories/${id}/products`,config)
 }
 
-export const getProductDetails =(id,config)=>{
-    return Http.get(`/products/${id}`,config)
-}
+
 export const getCommentsProduct = (id,config)=>{
     return Http.get(`/products/${id}/comments`,config)
 }
