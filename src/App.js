@@ -23,13 +23,13 @@ import { Provider } from "react-redux"
 
 
 const App = () => {
-  const [categories, setCategories] = React.useState([]);
-  React.useEffect(()=>{
-    getCategories().then((res)=>{
-      setCategories(res.data.data.docs);
-      console.log(typeof(categories));
-    })
-  },[])
+  // const [categories, setCategories] = React.useState([]);
+  // React.useEffect(()=>{
+  //   getCategories().then((res)=>{
+  //     setCategories(res.data.data.docs);
+  //     console.log(typeof(categories));
+  //   })
+  // },[])
   // const location = useLocation();
   // console.log(location.pathname);
   // console.log(location.search);
@@ -44,14 +44,14 @@ const App = () => {
       {/*	Body	*/}
       <div id="body">
         <div className="container">
-            <Menu item={categories}/>
+            {/* <Menu item={categories}/> */}
           <div className="row">
             <div id="main" className="col-lg-8 col-md-12 col-sm-12">
               <Slider/>
               <Switch>
        <Route exact path="/" component={HomePage}/>
        <Route path="/Cart" component={CartPage}/>
-       <Route path="/Category-:id" component={CategoryPage}/>
+       {/* <Route path="/Category-:id" component={CategoryPage}/> */}
        <Route path="/Search" component={SearchPage}/>
        <Route path="/Product-details-:id" component={ProductDetailsPage}/>
        <Route path="/Success" component={SuccessPage}/>
